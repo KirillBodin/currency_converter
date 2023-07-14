@@ -1,0 +1,27 @@
+<div class="converter" [formGroup]="converterForm">
+  <div class="input-wrapper">
+    <input type="number" formControlName="inputValue" (input)="calculateOutput()" step="0.01" />
+    <div class="error-messages" *ngIf="inputValue?.invalid && (inputValue?.dirty || inputValue?.touched)">
+      <div *ngIf="inputValue?.hasError('required')">Input value is required.</div>
+      <div *ngIf="inputValue?.hasError('positiveNumber')">Please enter a positive number.</div>
+      <div *ngIf="inputValue?.hasError('validNumber')">Please enter a valid number.</div>
+    </div>
+    <select formControlName="inCurr" (change)="calculateOutput()">
+      <option value="UAH">UAH</option>
+      <option value="USD">USD</option>
+      <option value="EUR">EUR</option>
+    </select>
+  </div>
+  <div class="input-wrapper">
+    <input type="number" formControlName="outputValue" (input)="calculateInput()" step="0.01" />
+    <div class="error-messages" *ngIf="outputValue?.invalid && (outputValue?.dirty || outputValue?.touched)">
+      <div *ngIf="outputValue?.hasError('required')">Output value is required.</div>
+      <div *ngIf="outputValue?.hasError('validNumber')">Please enter a valid number.</div>
+    </div>
+    <select formControlName="outCurr" (change)="calculateInput()">
+      <option value="UAH">UAH</option>
+      <option value="USD">USD</option>
+      <option value="EUR">EUR</option>
+    </select>
+  </div>
+</div>

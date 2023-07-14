@@ -1,0 +1,12 @@
+<div class="content">
+  <div class="header">
+    <h2>Currency Converter</h2>
+    <ng-container *ngIf="!errorFetchingRates">
+      <p>1 USD = {{ roundValue(1 / exchangeRates['usd']) }} UAH</p>
+      <p>1 EUR = {{ roundValue(1 / exchangeRates['eur']) }} UAH</p>
+    </ng-container>
+    <ng-container *ngIf="errorFetchingRates">
+      <p>Failed to fetch exchange rates. Please try again later.</p>
+    </ng-container>
+  </div>
+</div>

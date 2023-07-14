@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ExchangeRatesService, ExchangeRates } from '../services/exchange-rates.service';
+import { ExchangeRatesService, ExchangeRates } from '../../services/exchange-rates.service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.css']
 })
-export class AppComponent implements OnInit {
+export class HeaderComponent implements OnInit {
   exchangeRates: ExchangeRates = {};
   errorFetchingRates: boolean = false;
 
@@ -26,5 +26,9 @@ export class AppComponent implements OnInit {
         this.errorFetchingRates = true;
       }
     );
+  }
+
+  roundValue(value: number): number {
+    return Math.round(value * 100) / 100;
   }
 }
